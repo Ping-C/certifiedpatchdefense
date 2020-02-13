@@ -1,0 +1,55 @@
+{
+    "model_def": "model_defs.py",
+    "dataset": "cifar",
+    "log_suffix": "",
+    "path_prefix": "",
+    "models_path": "./results/cifar_robtrain_p22_rand5/",
+    "training_params": {
+        "method": "robust",
+        "epochs": 200,
+        "lr": 0.001,
+        "weight_decay": 0.0,
+        "starting_epsilon": 0,
+        "epsilon": 1,
+        "schedule_start": 10,
+        "schedule_length":121,
+        "optimizer": "adam",
+        "verbose": false,
+        "loader_params": {"batch_size": 256, "test_batch_size": 256, "shuffle_train": true, "train_random_transform": true, "normalize_input": true},
+        "method_params": {"attack_type": "patch-random", "bound_type": "patch-interval",
+            "patch_w": 2, "patch_l": 2, "patch_count": 5,
+            "epsilon": 1}
+    },
+    "eval_params": {
+        "method": "robust",
+        "verbose": false,
+        "epsilon": 1,
+        "loader_params": {"batch_size": 10, "test_batch_size": 10, "normalize_input": true},
+        "method_params": {"attack_type": "patch-all", "bound_type": "patch-interval",
+            "patch_w": 2, "patch_l": 2,
+            "epsilon": 1}
+    },
+    "models": [
+        {
+            "model_id": "mlp_255",
+            "model_class": "model_mlp_any",
+            "model_params": {"in_dim": 3072, "neurons": [255]}
+        },
+        {
+            "model_id": "cnn_2layer_width_1",
+            "model_class": "model_cnn_2layer",
+            "model_params": {"in_ch": 3, "in_dim": 32, "width": 1, "linear_size": 256}
+        },
+        {
+            "model_id": "cnn_4layer_linear_256_width_1",
+            "model_class": "model_cnn_4layer",
+            "model_params": {"in_ch": 3, "in_dim": 32, "width": 1, "linear_size": 256}
+        },
+        {
+            "model_id": "cnn_5layer_linear_512_width_16",
+            "model_class": "model_cnn_5layer",
+            "model_params": {"in_ch": 3, "in_dim": 32, "width": 16, "linear_size": 512}
+        }
+    ]
+}
+

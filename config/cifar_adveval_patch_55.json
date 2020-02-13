@@ -1,0 +1,35 @@
+{
+    "model_def": "model_defs.py",
+    "dataset": "cifar",
+    "path_prefix": "",
+    "log_suffix": "eval_patch_55_cifar",
+    "models_path": "",
+    "eval_params": {
+        "method": "adv",
+        "verbose": false,
+        "epsilon": 1,
+        "loader_params": {"batch_size": 10, "test_batch_size": 10, "shuffle_train": true, "normalize_input": true},
+        "method_params": {"bounded_input": true, "attack_type": "patch-random",
+            "patch_w": 5, "patch_l": 5,
+            "epsilon": 1, "steps": 150, "random_start": true, "random_mask_count": 80,"sample_limit": 400,
+            "step_size": 0.05}
+    },
+    "models": [
+        {
+            "model_id": "mlp_255",
+            "model_class": "model_mlp_any",
+            "model_params": {"in_dim": 3072, "neurons": [255]}
+        },
+        {
+            "model_id": "cnn_2layer_width_1",
+            "model_class": "model_cnn_2layer",
+            "model_params": {"in_ch": 3, "in_dim": 32, "width": 1, "linear_size": 256}
+        },
+        {
+            "model_id": "cnn_4layer_linear_256_width_1",
+            "model_class": "model_cnn_4layer",
+            "model_params": {"in_ch": 3, "in_dim": 32, "width": 1, "linear_size": 256}
+        }
+    ]
+}
+

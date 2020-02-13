@@ -1,0 +1,39 @@
+{
+    "model_def": "model_defs.py",
+    "dataset": "mnist",
+    "log_suffix": "",
+    "path_prefix": "",
+    "models_path": "./results/mnist_robtrain_k1_sparse/",
+    "training_params": {
+        "method": "robust",
+        "epochs": 100,
+        "lr": 5e-4,
+        "weight_decay": 0.0,
+        "starting_epsilon": 0,
+        "epsilon": 1,
+        "schedule_start": 1,
+        "schedule_length":11,
+        "optimizer": "adam",
+        "verbose": false,
+        "loader_params": {"batch_size": 256, "test_batch_size": 256, "shuffle_train": true},
+        "method_params": {"attack_type": "sparse", "bound_type": "sparse-interval",
+            "k": 1, "epsilon": 1}
+    },
+    "eval_params": {
+        "method": "robust",
+        "verbose": false,
+        "epsilon": 1,
+        "loader_params": {"batch_size": 256, "test_batch_size": 256},
+        "method_params": {"attack_type": "sparse", "bound_type": "sparse-interval",
+            "k": 1, "epsilon": 1}
+    },
+    "models": [
+        {
+            "model_id": "mlp_255",
+            "model_class": "model_mlp_any",
+            "model_params": {"in_dim": 784, "neurons": [255]}
+        }
+    ]
+}
+
+

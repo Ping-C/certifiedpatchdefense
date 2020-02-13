@@ -1,0 +1,51 @@
+{
+    "model_def": "model_defs.py",
+    "dataset": "mnist",
+    "log_suffix": "",
+    "path_prefix": "",
+    "models_path": "./results/mnist_robtrain_p55_rand5/",
+    "training_params": {
+        "method": "robust",
+        "epochs": 100,
+        "lr": 5e-4,
+        "weight_decay": 0.0,
+        "starting_epsilon": 0,
+        "epsilon": 1,
+        "schedule_start": 1,
+        "schedule_length":61,
+        "optimizer": "adam",
+        "verbose": false,
+        "loader_params": {"batch_size": 256, "test_batch_size": 256, "shuffle_train": true},
+        "method_params": {"attack_type": "patch-random", "bound_type": "patch-interval",
+            "patch_w": 5, "patch_l": 5, "patch_count": 5,
+            "epsilon": 1}
+    },
+    "eval_params": {
+        "method": "robust",
+        "verbose": false,
+        "epsilon": 1,
+        "loader_params": {"batch_size": 10, "test_batch_size": 10},
+        "method_params": {"attack_type": "patch-all", "bound_type": "patch-interval",
+            "patch_w": 5, "patch_l": 5,
+            "epsilon": 1}
+    },
+    "models": [
+        {
+            "model_id": "mlp_255",
+            "model_class": "model_mlp_any",
+            "model_params": {"in_dim": 784, "neurons": [255]}
+        },
+        {
+            "model_id": "cnn_2layer_width_1",
+            "model_class": "model_cnn_2layer",
+            "model_params": {"in_ch": 1, "in_dim": 28, "width": 1, "linear_size": 256}
+        },
+        {
+            "model_id": "cnn_4layer_linear_256_width_1",
+            "model_class": "model_cnn_4layer",
+            "model_params": {"in_ch": 1, "in_dim": 28, "width": 1, "linear_size": 256}
+        }
+    ]
+}
+
+
