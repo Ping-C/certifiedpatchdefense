@@ -13,7 +13,7 @@ ICLR 2020 <br>
 
 Reproduce Best Performing Models
 ---------------------
-You can reproduce our best performing models against patch attack by running the following scripts. You could also down pretrained models [here](https://drive.google.com/file/d/1cw3N3M3mZ4AXS8d3psKzgMiq7U5LWowL/view?usp=sharing) <br>
+You can reproduce our best performing models against patch attack by running the following scripts. You could also download pretrained models [here](https://drive.google.com/file/d/1cw3N3M3mZ4AXS8d3psKzgMiq7U5LWowL/view?usp=sharing) <br>
 ```bash
 python train.py --config config/cifar_robtrain_p22_guide20.json --model_subset 3
 python train.py --config config/cifar_robtrain_p55_rand20.json --model_subset 3
